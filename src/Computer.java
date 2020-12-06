@@ -13,7 +13,7 @@ public class Computer {
     private int maxRamMemory;
     private int maxHardDisk;
     private Operatingsystem operatingSystem;
-
+//constructor
     public Computer(String name, int ramMemory, int HardDisk) {
         this.name = name;
         this.maxRamMemory = ramMemory;
@@ -22,6 +22,7 @@ public class Computer {
         this.HardDisk = maxHardDisk;
     }
 
+//gets
 
     public Operatingsystem getOperatingSystem() {
         return this.operatingSystem;
@@ -42,17 +43,13 @@ public class Computer {
     public int getMaxHardDisk() {
         return maxHardDisk;
     }
-
+//methods
     public void installOperatingSystem(Operatingsystem os) throws Exception {
         if (this.operatingSystem == null && this.HardDisk >= os.getOsSpaceRequirement()) {
-            // Assign physic computer to an operative system.
             os.setComputer(this);
-            // Assign the operative system in the
             this.operatingSystem = os;
-            // Update the drive space in the computer.
             updateDriveSpace(os.getOsSpaceRequirement(), "-");
         } else {
-            // User cannot install more than one operative system in the computer.(Rule)
             throw new Exception("Existing operating system.");
         }
     }
@@ -78,13 +75,6 @@ public class Computer {
             }
         }
     }
-
-    public void formatSystem() {
-        this.operatingSystem = null;
-        this.HardDisk = this.maxHardDisk;
-        this.ramMemory = this.maxRamMemory;
-    }
-
     public String toString() {
         return "Computer{" +
                 "name='" + name + '\'' +
@@ -95,5 +85,12 @@ public class Computer {
                 ", operativeSystem=" + operatingSystem +
                 '}';
     }
+
+    public void formatSystem() {
+        this.operatingSystem = null;
+        this.HardDisk = this.maxHardDisk;
+        this.ramMemory = this.maxRamMemory;
+    }
+
 }
 

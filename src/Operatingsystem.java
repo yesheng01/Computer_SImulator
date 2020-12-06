@@ -18,6 +18,8 @@ public class Operatingsystem {
     private ArrayList <Software> osSoftware;
     private Computer osComputer;
 
+
+    //Constructor
     public Operatingsystem(String osName, String osVersion, String osArchitecture, boolean osOnlyCommand, int osSpaceRequirement, int osRamMemoryRequirement) {
         this.osName = osName;
         this.osVersion = osVersion;
@@ -26,8 +28,8 @@ public class Operatingsystem {
         this.osRamMemoryRequirement = osRamMemoryRequirement;
         this.osSpaceRequirement = osSpaceRequirement;
         osSoftware = new ArrayList<Software>();
-
     }
+    //Gets and setters
     public String getOsName(){
         return this.osName;
     }
@@ -80,7 +82,7 @@ public class Operatingsystem {
     }
 
 
-    private boolean checkDiskSpace(int spaceToBeSet){
+    private boolean MiraDiskSpace(int spaceToBeSet){
         if(spaceToBeSet < this.osComputer.getMaxHardDisk() && (this.osComputer.getCurrentHardDisk() + spaceToBeSet) <= this.osComputer.getMaxHardDisk()){
             return true;
         } else {
@@ -88,7 +90,7 @@ public class Operatingsystem {
         }
     }
 
-    private boolean checkRamSpace(int spaceToBeSet){
+    private boolean MiraRamSpace(int spaceToBeSet){
         if(spaceToBeSet < this.osComputer.getMaxRamMemory() && (this.osComputer.getCurrentRamMemory() + spaceToBeSet) <= this.osComputer.getMaxRamMemory()){
             return true;
         } else {
@@ -98,8 +100,8 @@ public class Operatingsystem {
 
     public void installApplication(Software app) throws Exception {
         if(this.osSoftware.contains(app)){
-            throw new Exception("App already exists.");
-        } else if(checkDiskSpace(app.getSoftwareSpaceRequirement())){
+            throw new Exception("NO EXISTE");
+        } else if(MiraDiskSpace(app.getSoftwareSpaceRequirement())){
             this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(),"-");
             this.osSoftware.add(app);
         } else {
@@ -107,7 +109,7 @@ public class Operatingsystem {
         }
     }
 
-    // Method for uninstalling application, update computer requirements and software list.
+
     public void uninstallApplication(Software app) throws Exception {
         if(this.osSoftware.contains(app)){
             if(app.isOpen()){
@@ -116,13 +118,12 @@ public class Operatingsystem {
             this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(), "+");
             this.osSoftware.remove(app);
         } else {
-            throw new Exception("Software isn't installed.");
+            throw new Exception("SIN INSTALAR.");
         }
     }
-
-    // Method for opening an application and update the ram space.
+//Metodos
     public void openApplication(Software app) throws Exception {
-        if(checkRamSpace(app.getSoftwareRamMemoryRequirement())){
+        if(MiraDiskSpace(app.getSoftwareRamMemoryRequirement())){
             try {
                 app.openApp();
             } catch (Exception e){
@@ -130,11 +131,10 @@ public class Operatingsystem {
             }
             this.osComputer.updateRamSpace(app.getSoftwareRamMemoryRequirement(),"-");
         } else {
-            throw new Exception("RAM requirement not satisfied.");
+            throw new Exception("NO HAY SUFICIENTE RAM");
         }
     }
 
-    // Method for closing an application and update the ram space.
     public void closeApplication(Software app){
         try {
             app.closeApp();
