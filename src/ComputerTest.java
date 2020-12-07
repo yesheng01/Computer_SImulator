@@ -9,7 +9,7 @@
 public class ComputerTest {
     public static void main(String[] args) {
         // El Ordenador
-        Computer c1 = new Computer("HP", 4096, 100000);
+        Computer c1 = new Computer("HP", 4096, 1000000);
 
         // Se crea el sistema operativo
         Operatingsystem SO = new Operatingsystem("windows", "10", "x64", false, 20, 2);

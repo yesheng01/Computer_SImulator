@@ -82,16 +82,16 @@ public class Operatingsystem {
     }
 
 
-    private boolean MiraDiskSpace(int spaceToBeSet){
-        if(spaceToBeSet < this.osComputer.getMaxHardDisk() && (this.osComputer.getCurrentHardDisk() + spaceToBeSet) <= this.osComputer.getMaxHardDisk()){
+    private boolean MiraDiskSpace(int Espacio){
+        if(Espacio < this.osComputer.getMaxHardDisk() && (this.osComputer.getCurrentHardDisk() + Espacio) <= this.osComputer.getMaxHardDisk()){
             return true;
         } else {
             return false;
         }
     }
 
-    private boolean MiraRamSpace(int spaceToBeSet){
-        if(spaceToBeSet < this.osComputer.getMaxRamMemory() && (this.osComputer.getCurrentRamMemory() + spaceToBeSet) <= this.osComputer.getMaxRamMemory()){
+    private boolean MiraRamSpace(int Espacio){
+        if(Espacio < this.osComputer.getMaxRamMemory() && (this.osComputer.getCurrentRamMemory() + Espacio) <= this.osComputer.getMaxRamMemory()){
             return true;
         } else {
             return false;
