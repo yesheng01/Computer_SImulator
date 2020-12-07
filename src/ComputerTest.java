@@ -17,7 +17,7 @@ public class ComputerTest {
         Software s1, s2;
         s1 = new Software("Photoshop", "1.0", 0.5f, 1);
         s2 = new Software("OpenOffice", "10", 0.2f, 0.6f);
-
+        // Methods
         try {
             c1.installOperatingSystem(SO);
         } catch (Exception e) {
