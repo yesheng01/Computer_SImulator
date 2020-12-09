@@ -31,7 +31,7 @@ public class ComputerTest {
 
         System.out.println("formateado.");
         System.out.println(c1.toString() + "\n");
-        System.out.println("Programas:" + "\n\n" + s1.getSoftwareName() + "\n\n" + s2.getSoftwareName());
+        System.out.println("Programas:" + "\n\n" + s1.getSoftwareName() + ":" +  s1.getSoftwareRamMemoryRequirement() + "\n\n" + s2.getSoftwareName() + ":" + s2.getSoftwareRamMemoryRequirement());
 
     }
 }
