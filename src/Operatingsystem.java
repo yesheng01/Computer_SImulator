@@ -68,7 +68,7 @@ public class Operatingsystem {
         this.osSpaceRequirement = osSpaceRequirement;
     }
     public int getOsRamMemoryRequirement(){
-        return osRamMemoryRequirement * 1024;
+        return osRamMemoryRequirement * 1000;
     }
     public void setOsRamMemoryRequirement(){
         this.osRamMemoryRequirement = osRamMemoryRequirement;
