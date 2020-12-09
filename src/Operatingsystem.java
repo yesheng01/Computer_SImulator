@@ -77,14 +77,20 @@ public class Operatingsystem {
         this.osComputer = computer;
     }
 
+    public ArrayList<Software> getOsSoftware() {
+        return osSoftware;
+    }
+
+
+    //Methods
     public void installApplication(Software app) throws Exception {
         if(this.osSoftware.contains(app)){
-            throw new Exception("App already exists.");
+            throw new Exception("Existe");
         } else if(MiraDiskSpace(app.getSoftwareSpaceRequirement())){
             this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(),"-");
             this.osSoftware.add(app);
         } else {
-            throw new Exception("Error.");
+            throw new Exception("Nada");
         }
     }
 
@@ -93,14 +99,9 @@ public class Operatingsystem {
             this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(), "+");
             this.osSoftware.remove(app);
         } else {
-            throw new Exception("Software isn't installed.");
+            throw new Exception("No es instalado");
         }
     }
-
-    public ArrayList<Software> getOsSoftware() {
-        return osSoftware;
-    }
-
 
     private boolean MiraDiskSpace(int Espacio){
         if(Espacio < this.osComputer.getMaxHardDisk() && (this.osComputer.getCurrentHardDisk() + Espacio) <= this.osComputer.getMaxHardDisk()){
