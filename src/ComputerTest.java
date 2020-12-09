@@ -15,8 +15,8 @@ public class ComputerTest {
         Operatingsystem SO = new Operatingsystem("windows", "10", "x64", false, 20, 2);
         // Creas la aplicacion
         Software s1, s2;
-        s1 = new Software("Photoshop", "1.0", 0.5, 1);
-        s2 = new Software("OpenOffice", "10", 0.2, 0.6);
+        s1 = new Software("Photoshop", "1.0", 5, 1);
+        s2 = new Software("OpenOffice", "10", 2, 6);
         // Methods
         try {
             c1.installOperatingSystem(SO);
