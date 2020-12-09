@@ -12,7 +12,7 @@ public class ComputerTest {
         Computer c1 = new Computer("HP", 4096, 100000);
 
         // Se crea el sistema operativo
-        Operatingsystem SO = new Operatingsystem("windows", "10", "x64", false, 20, 2);
+        Operatingsystem SO = new Operatingsystem("Windows Pro", "10", "x64", false, 20, 2);
         // Creas la aplicacion
         Software s1, s2;
         s1 = new Software("Photoshop", "1.0", 5, 1);

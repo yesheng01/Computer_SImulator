@@ -28,11 +28,11 @@ public class Computer {
         return this.operatingSystem;
     }
 
-    public int getCurrentRamMemory() {
+    public int getRamMemoryActual() {
         return ramMemory;
     }
 
-    public int getCurrentHardDisk() {
+    public int getHardDiskActual() {
         return HardDisk;
     }
 
@@ -65,15 +65,15 @@ public class Computer {
         }
     }
 
-
+//Muestra los atributos seleccionados
     public String toString() {
         return "Ordenador:" + "Nombre de ordenador='" + name + '\'' + ", maxRamMemory=" + maxRamMemory + ", maxHardDisk=" + maxHardDisk + ", ramMemoryLibre=" + ramMemory + ", hardDiskLibre=" + HardDisk + ", operativeSystem=" + operatingSystem;
     }
-
+//Metodo para formatear
     public void formatSystem() {
-        this.operatingSystem = null;
         this.HardDisk = this.maxHardDisk;
         this.ramMemory = this.maxRamMemory;
+        this.operatingSystem = null;
     }
 
 }
