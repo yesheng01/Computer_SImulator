@@ -27,7 +27,7 @@ public class Operatingsystem {
         this.osOnlyCommand = osOnlyCommand;
         this.osRamMemoryRequirement = osRamMemoryRequirement;
         this.osSpaceRequirement = osSpaceRequirement;
-        osSoftware = new ArrayList<Software>();
+        this.osSoftware = new ArrayList<Software>();
     }
     //Gets and setters
     public String getOsName(){
@@ -96,52 +96,6 @@ public class Operatingsystem {
         } else {
             return false;
         }
-    }
-
-    public void installApplication(Software app) throws Exception {
-        if(this.osSoftware.contains(app)){
-            throw new Exception("NO EXISTE");
-        } else if(MiraDiskSpace(app.getSoftwareSpaceRequirement())){
-            this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(),"-");
-            this.osSoftware.add(app);
-        } else {
-            throw new Exception("Error.");
-        }
-    }
-
-
-    public void uninstallApplication(Software app) throws Exception {
-        if(this.osSoftware.contains(app)){
-            if(app.isOpen()){
-                this.closeApplication(app);
-            }
-            this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(), "+");
-            this.osSoftware.remove(app);
-        } else {
-            throw new Exception("SIN INSTALAR.");
-        }
-    }
-//Metodos
-    public void openApplication(Software app) throws Exception {
-        if(MiraDiskSpace(app.getSoftwareRamMemoryRequirement())){
-            try {
-                app.openApp();
-            } catch (Exception e){
-                e.getMessage();
-            }
-            this.osComputer.updateRamSpace(app.getSoftwareRamMemoryRequirement(),"-");
-        } else {
-            throw new Exception("NO HAY SUFICIENTE RAM");
-        }
-    }
-
-    public void closeApplication(Software app){
-        try {
-            app.closeApp();
-        } catch (Exception e){
-            e.getMessage();
-        }
-        this.osComputer.updateRamSpace(app.getSoftwareRamMemoryRequirement(),"+");
     }
 
 

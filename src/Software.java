@@ -9,11 +9,10 @@
 public class Software {
     private String softwareName;
     private String softwareVersion;
-    private float softwareSpaceRequirement ;
-    private float softwareRamMemoryRequirement;
-    private boolean Open = false;
+    private double softwareSpaceRequirement ;
+    private double softwareRamMemoryRequirement;
 //Constructor
-    public Software (String softwareName , String softwareVersion , float softwareRamMemoryRequirement , float softwareSpaceRequirement){
+    public Software (String softwareName , String softwareVersion , double  softwareRamMemoryRequirement , double  softwareSpaceRequirement){
         this.softwareName = softwareName;
         this.softwareVersion = softwareVersion;
         this.softwareRamMemoryRequirement = softwareRamMemoryRequirement;
@@ -36,32 +35,12 @@ public class Software {
         this.softwareVersion = softwareVersion;
     }
 
-    public int getSoftwareSpaceRequirement() {
-        return (int) softwareSpaceRequirement * 1000 ;
+    public double getSoftwareSpaceRequirement() {
+        return softwareSpaceRequirement * 1000 ;
     }
 
-    public int getSoftwareRamMemoryRequirement() {
-        return (int) softwareRamMemoryRequirement * 1024;
-    }
-    //Se abre el app
-    public void openApp() throws Exception {
-        if(this.Open){
-            throw new Exception("App is already open.");
-        } else{
-            this.Open = true;
-        }
-    }
-    //Se cierra el App
-    public void closeApp() throws Exception {
-        if(!this.Open){
-            throw new Exception("App is already open.");
-        } else{
-            this.Open = false;
-        }
-    }
-
-    public boolean isOpen(){
-        return this.Open;
+    public double getSoftwareRamMemoryRequirement() {
+        return softwareRamMemoryRequirement * 1024;
     }
 
 

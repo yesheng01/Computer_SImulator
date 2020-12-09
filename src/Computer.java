@@ -65,25 +65,9 @@ public class Computer {
         }
     }
 
-    public void updateRamSpace(int spaceToUpdate, String op) {
-        switch (op) {
-            case "+" -> {
-                this.ramMemory += spaceToUpdate;
-            }
-            case "-" -> {
-                this.ramMemory -= spaceToUpdate;
-            }
-        }
-    }
+
     public String toString() {
-        return "Computer{" +
-                "name='" + name + '\'' +
-                ", maxRamMemory=" + maxRamMemory +
-                ", maxHardDisk=" + maxHardDisk +
-                ", Free ramMemory=" + ramMemory +
-                ", Free hardDisk=" + HardDisk +
-                ", operativeSystem=" + operatingSystem +
-                '}';
+        return "Ordenador:" + "Nombre de ordenador='" + name + '\'' + ", maxRamMemory=" + maxRamMemory + ", maxHardDisk=" + maxHardDisk + ", ramMemoryLibre=" + ramMemory + ", hardDiskLibre=" + HardDisk + ", operativeSystem=" + operatingSystem ;
     }
 
     public void formatSystem() {
