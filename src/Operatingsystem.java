@@ -104,7 +104,7 @@ public class Operatingsystem {
             return false;
         }
     }
-
+//Añade al arraylist la aplicacion instalada
     public void installApplication(Software aplicacion) throws Exception {
         if(this.opSoftware.contains(aplicacion)){
             throw new Exception("Existe");
