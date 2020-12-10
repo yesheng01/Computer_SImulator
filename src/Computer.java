@@ -28,6 +28,14 @@ public class Computer {
         return this.operatingSystem;
     }
 
+    public int getMaxRamMemory() {
+        return maxRamMemory;
+    }
+
+    public int getMaxHardDisk() {
+        return maxHardDisk;
+    }
+
     public int getRamMemoryActual() {
         return ramMemory;
     }
@@ -36,13 +44,6 @@ public class Computer {
         return HardDisk;
     }
 
-    public int getMaxRamMemory() {
-        return maxRamMemory;
-    }
-
-    public int getMaxHardDisk() {
-        return maxHardDisk;
-    }
 //methods
     public void installOperatingSystem(Operatingsystem os) throws Exception {
         if (this.operatingSystem == null && this.HardDisk >= os.getOsSpaceRequirement()) {
@@ -50,12 +51,12 @@ public class Computer {
             this.operatingSystem = os;
             updateDriveSpace(os.getOsSpaceRequirement(), "-");
         } else {
-            throw new Exception("Existing operating system.");
+            throw new Exception("Sistema Operativo  existe.");
         }
     }
 
-    public void updateDriveSpace(int spaceToUpdate, String op) {
-        switch (op) {
+    public void updateDriveSpace(int spaceToUpdate, String operativo) {
+        switch (operativo) {
             case "+" -> {
                 this.HardDisk += spaceToUpdate;
             }

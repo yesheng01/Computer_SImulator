@@ -20,17 +20,19 @@ public class ComputerTest {
         // Methods
         try {
             c1.installOperatingSystem(SO);
+            SO.installApplication(s1);
+            SO.installApplication(s2);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         System.out.println("formatea.");
-        System.out.println(c1.toString() + "\n");
+        System.out.println(c1.toString() + ":"+ SO.getOsName()+"\n");
 
         c1.formatSystem();
 
         System.out.println("formateado.");
-        System.out.println(c1.toString() + "\n");
+        System.out.println(c1.toString() +"\n");
         System.out.println("Programas:" + "\n\n" + s1.getSoftwareName() + ":" +  s1.getSoftwareRamMemoryRequirement() + "\n\n" + s2.getSoftwareName() + ":" + s2.getSoftwareRamMemoryRequirement());
 
     }

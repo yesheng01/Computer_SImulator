@@ -15,7 +15,7 @@ public class Operatingsystem {
     private boolean osOnlyCommand;
     private int osSpaceRequirement;
     private int osRamMemoryRequirement;
-    private ArrayList <Software> osSoftware;
+    private ArrayList <Software> opSoftware;
     private Computer osComputer;
 
 
@@ -27,7 +27,7 @@ public class Operatingsystem {
         this.osOnlyCommand = osOnlyCommand;
         this.osRamMemoryRequirement = osRamMemoryRequirement;
         this.osSpaceRequirement = osSpaceRequirement;
-        this.osSoftware = new ArrayList<Software>();
+        this.opSoftware = new ArrayList<Software>();
     }
     //Gets and setters
     public String getOsName(){
@@ -73,33 +73,27 @@ public class Operatingsystem {
     public void setOsRamMemoryRequirement(){
         this.osRamMemoryRequirement = osRamMemoryRequirement;
     }
+
+    public Computer getOsComputer() {
+        return osComputer;
+    }
+
     public void setComputer(Computer computer){
         this.osComputer = computer;
     }
 
     public ArrayList<Software> getOsSoftware() {
-        return osSoftware;
+        return opSoftware;
     }
 
 
     //Methods
-    public void installApplication(Software app) throws Exception {
-        if(this.osSoftware.contains(app)){
-            throw new Exception("Existe");
-        } else if(MiraDiskSpace(app.getSoftwareSpaceRequirement())){
-            this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(),"-");
-            this.osSoftware.add(app);
-        } else {
-            throw new Exception("Nada");
-        }
-    }
 
-    public void uninstallApplication(Software app) throws Exception {
-        if(this.osSoftware.contains(app)){
-            this.osComputer.updateDriveSpace(app.getSoftwareSpaceRequirement(), "+");
-            this.osSoftware.remove(app);
+    private boolean MiraRamSpace(int Espacio){
+        if(Espacio < this.osComputer.getMaxRamMemory() && (this.osComputer.getRamMemoryActual() + Espacio) <= this.osComputer.getMaxRamMemory()){
+            return true;
         } else {
-            throw new Exception("No es instalado");
+            return false;
         }
     }
 
@@ -111,14 +105,25 @@ public class Operatingsystem {
         }
     }
 
-    private boolean MiraRamSpace(int Espacio){
-        if(Espacio < this.osComputer.getMaxRamMemory() && (this.osComputer.getRamMemoryActual() + Espacio) <= this.osComputer.getMaxRamMemory()){
-            return true;
+    public void installApplication(Software aplicacion) throws Exception {
+        if(this.opSoftware.contains(aplicacion)){
+            throw new Exception("Existe");
+        } else if(MiraDiskSpace(aplicacion.getSoftwareSpaceRequirement())){
+            this.osComputer.updateDriveSpace(aplicacion.getSoftwareSpaceRequirement(),"-");
+            this.opSoftware.add(aplicacion);
         } else {
-            return false;
+            throw new Exception("Nada");
         }
     }
 
+    public void uninstallApplication(Software aplicacion) throws Exception {
+        if(this.opSoftware.contains(aplicacion)){
+            this.osComputer.updateDriveSpace(aplicacion.getSoftwareSpaceRequirement(), "+");
+            this.opSoftware.remove(aplicacion);
+        } else {
+            throw new Exception("No es instalado");
+        }
+    }
 
 
 }
