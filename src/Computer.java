@@ -10,38 +10,46 @@ public class Computer {
     private String name;
     private int ramMemory;
     private int HardDisk;
-    private int maxRamMemory;
-    private int maxHardDisk;
     private Operatingsystem operatingSystem;
 //constructor
     public Computer(String name, int ramMemory, int HardDisk) {
         this.name = name;
-        this.maxRamMemory = ramMemory;
-        this.ramMemory = maxRamMemory;
-        this.maxHardDisk = HardDisk;
-        this.HardDisk = maxHardDisk;
+        this.ramMemory = ramMemory;
+        this.HardDisk = HardDisk;
     }
 
 //gets
 
     public Operatingsystem getOperatingSystem() {
-        return this.operatingSystem;
+        return operatingSystem;
     }
 
-    public int getMaxRamMemory() {
-        return maxRamMemory;
+    public String getName() {
+        return name;
     }
 
-    public int getMaxHardDisk() {
-        return maxHardDisk;
-    }
-
-    public int getRamMemoryActual() {
+    public int getRamMemory() {
         return ramMemory;
     }
 
-    public int getHardDiskActual() {
+    public int getHardDisk() {
         return HardDisk;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRamMemory(int ramMemory) {
+        this.ramMemory = ramMemory;
+    }
+
+    public void setHardDisk(int hardDisk) {
+        this.HardDisk = hardDisk;
+    }
+
+    public void setOperatingSystem(Operatingsystem operatingSystem) {
+        this.operatingSystem = operatingSystem;
     }
 
 //methods
@@ -50,6 +58,7 @@ public class Computer {
             os.setComputer(this);
             this.operatingSystem = os;
             updateDriveSpace(os.getOsSpaceRequirement(), "-");
+            updateRamSpace(os.getOsRamMemoryRequirement(), "-");
         } else {
             throw new Exception("Sistema Operativo  existe.");
         }
@@ -65,17 +74,26 @@ public class Computer {
             }
         }
     }
+    public void updateRamSpace(int spaceToUpdate, String operativo) {
+        switch (operativo) {
+            case "+" -> {
+                this.ramMemory += spaceToUpdate;
+            }
+            case "-" -> {
+                this.ramMemory -= spaceToUpdate;
+            }
+        }
+    }
 
 //Muestra los atributos seleccionados
     public String toString() {
-        return "Ordenador:" + "Nombre de ordenador='" + name + '\'' + ", maxRamMemory=" + maxRamMemory + ", maxHardDisk=" + maxHardDisk + ", ramMemoryLibre=" + ramMemory + ", hardDiskLibre=" + HardDisk + ", operativeSystem=" + operatingSystem;
+        return "Ordenador:" + "Nombre de ordenador='" + name + '\'' + ", ramMemoryLibre=" + ramMemory + ", hardDiskLibre=" + HardDisk + ", operativeSystem=" + operatingSystem;
     }
 //Metodo para formatear
-    public void formatSystem() {
-        this.HardDisk = this.maxHardDisk;
-        this.ramMemory = this.maxRamMemory;
-        this.operatingSystem = null;
-    }
-
+    public void format(){
+    this.HardDisk = HardDisk+operatingSystem.getOsSpaceRequirement();
+    this.ramMemory = ramMemory+operatingSystem.getOsRamMemoryRequirement();
+    this.operatingSystem=null;
+}
 }
 

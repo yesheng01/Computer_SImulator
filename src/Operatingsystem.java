@@ -61,14 +61,14 @@ public class Operatingsystem {
     }
 
     public int getOsSpaceRequirement(){
-        return osSpaceRequirement * 1000;
+        return osSpaceRequirement * 1;
     }
 
     public void setOsSpaceRequirement(){
         this.osSpaceRequirement = osSpaceRequirement;
     }
     public int getOsRamMemoryRequirement(){
-        return osRamMemoryRequirement * 1000;
+        return osRamMemoryRequirement * 1;
     }
     public void setOsRamMemoryRequirement(){
         this.osRamMemoryRequirement = osRamMemoryRequirement;
@@ -82,49 +82,18 @@ public class Operatingsystem {
         this.osComputer = computer;
     }
 
-    public ArrayList<Software> getOsSoftware() {
+    public ArrayList<Software> getOpSoftware() {
         return opSoftware;
     }
 
 
     //Methods
 
-    private boolean MiraRamSpace(int Espacio){
-        if(Espacio < this.osComputer.getMaxRamMemory() && (this.osComputer.getRamMemoryActual() + Espacio) <= this.osComputer.getMaxRamMemory()){
-            return true;
-        } else {
-            return false;
-        }
+    public void installSoftware(Software opSoftware){
+        this.opSoftware.add(opSoftware);
     }
-
-    private boolean MiraDiskSpace(int Espacio){
-        if(Espacio < this.osComputer.getMaxHardDisk() && (this.osComputer.getHardDiskActual() + Espacio) <= this.osComputer.getMaxHardDisk()){
-            return true;
-        } else {
-            return false;
-        }
+    public void uninstallSoftware(Software opSoftware){
+        this.opSoftware.remove(opSoftware);
     }
-//Añade al arraylist la aplicacion instalada
-    public void installApplication(Software aplicacion) throws Exception {
-        if(this.opSoftware.contains(aplicacion)){
-            throw new Exception("Existe");
-        } else if(MiraDiskSpace(aplicacion.getSoftwareSpaceRequirement())){
-            this.osComputer.updateDriveSpace(aplicacion.getSoftwareSpaceRequirement(),"-");
-            this.opSoftware.add(aplicacion);
-        } else {
-            throw new Exception("Nada");
-        }
-    }
-
-    public void uninstallApplication(Software aplicacion) throws Exception {
-        if(this.opSoftware.contains(aplicacion)){
-            this.osComputer.updateDriveSpace(aplicacion.getSoftwareSpaceRequirement(), "+");
-            this.opSoftware.remove(aplicacion);
-        } else {
-            throw new Exception("No es instalado");
-        }
-    }
-
-
 }
 

@@ -9,10 +9,10 @@
 public class Software {
     private String softwareName;
     private String softwareVersion;
-    private int softwareSpaceRequirement ;
-    private int softwareRamMemoryRequirement;
+    private double softwareSpaceRequirement ;
+    private double softwareRamMemoryRequirement;
 //Constructor
-    public Software (String softwareName , String softwareVersion , int  softwareRamMemoryRequirement , int  softwareSpaceRequirement){
+    public Software (String softwareName , String softwareVersion , double  softwareRamMemoryRequirement , double  softwareSpaceRequirement){
         this.softwareName = softwareName;
         this.softwareVersion = softwareVersion;
         this.softwareRamMemoryRequirement = softwareRamMemoryRequirement;
@@ -36,11 +36,16 @@ public class Software {
     }
 
     public int getSoftwareSpaceRequirement() {
-        return softwareSpaceRequirement * 1000 ;
+        return (int) softwareSpaceRequirement;
     }
-
+    public void setSoftwareSpaceRequirement(double softwareSpaceRequirement) {
+        this.softwareSpaceRequirement = softwareSpaceRequirement;
+    }
     public int getSoftwareRamMemoryRequirement() {
-        return softwareRamMemoryRequirement * 1024;
+        return (int) softwareRamMemoryRequirement ;
+    }
+    public void setSoftwareRamMemoryRequirement(double softwareRamMemoryRequirement) {
+        this.softwareRamMemoryRequirement = softwareRamMemoryRequirement;
     }
 
 
