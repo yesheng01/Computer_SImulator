@@ -61,14 +61,14 @@ public class Operatingsystem {
     }
 
     public int getOsSpaceRequirement(){
-        return osSpaceRequirement * 1;
+        return osSpaceRequirement;
     }
 
     public void setOsSpaceRequirement(){
         this.osSpaceRequirement = osSpaceRequirement;
     }
     public int getOsRamMemoryRequirement(){
-        return osRamMemoryRequirement * 1;
+        return osRamMemoryRequirement ;
     }
     public void setOsRamMemoryRequirement(){
         this.osRamMemoryRequirement = osRamMemoryRequirement;
@@ -88,6 +88,7 @@ public class Operatingsystem {
 
 
     //Methods
+    //Metodo con el arrayList , de forma ver que se añada el software o que se elimine de ella.
 
     public void installSoftware(Software opSoftware){
         this.opSoftware.add(opSoftware);

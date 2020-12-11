@@ -8,11 +8,11 @@
  **/
 public class Computer {
     private String name;
-    private int ramMemory;
+    private double ramMemory;
     private int HardDisk;
     private Operatingsystem operatingSystem;
 //constructor
-    public Computer(String name, int ramMemory, int HardDisk) {
+    public Computer(String name, double ramMemory, int HardDisk) {
         this.name = name;
         this.ramMemory = ramMemory;
         this.HardDisk = HardDisk;
@@ -28,7 +28,7 @@ public class Computer {
         return name;
     }
 
-    public int getRamMemory() {
+    public double getRamMemory() {
         return ramMemory;
     }
 
@@ -40,7 +40,7 @@ public class Computer {
         this.name = name;
     }
 
-    public void setRamMemory(int ramMemory) {
+    public void setRamMemory(double ramMemory) {
         this.ramMemory = ramMemory;
     }
 
@@ -90,7 +90,7 @@ public class Computer {
         return "Ordenador:" + "Nombre de ordenador='" + name + '\'' + ", ramMemoryLibre=" + ramMemory + ", hardDiskLibre=" + HardDisk + ", operativeSystem=" + operatingSystem;
     }
 //Metodo para formatear
-    public void format(){
+    public void formatSystem(){
     this.HardDisk = HardDisk+operatingSystem.getOsSpaceRequirement();
     this.ramMemory = ramMemory+operatingSystem.getOsRamMemoryRequirement();
     this.operatingSystem=null;
