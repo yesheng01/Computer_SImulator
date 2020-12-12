@@ -15,7 +15,7 @@ public class Operatingsystem {
     private boolean osOnlyCommand;
     private int osSpaceRequirement;
     private int osRamMemoryRequirement;
-    private ArrayList <Software> opSoftware;
+    private ArrayList <Software> opSoftware = new ArrayList<Software>();
     private Computer osComputer;
 
 
@@ -27,7 +27,6 @@ public class Operatingsystem {
         this.osOnlyCommand = osOnlyCommand;
         this.osRamMemoryRequirement = osRamMemoryRequirement;
         this.osSpaceRequirement = osSpaceRequirement;
-        this.opSoftware = new ArrayList<Software>();
     }
     //Gets and setters
     public String getOsName(){
@@ -90,11 +89,19 @@ public class Operatingsystem {
     //Methods
     //Metodo con el arrayList , de forma ver que se añada el software o que se elimine de ella.
 
-    public void installSoftware(Software opSoftware){
-        this.opSoftware.add(opSoftware);
+    public void installSoftware(Software opSoftware, Computer computer){
+        if (computer.getHardDisk()>=opSoftware.getSoftwareSpaceRequirement()&&computer.getRamMemory()>=opSoftware.getSoftwareRamMemoryRequirement()){
+            this.opSoftware.add(opSoftware);
+            computer.setHardDisk(computer.getHardDisk()-opSoftware.getSoftwareSpaceRequirement());
+            computer.setRamMemory(computer.getRamMemory()-opSoftware.getSoftwareRamMemoryRequirement());
+        }else {
+            System.out.println("No hay espacio");
+        }
     }
-    public void uninstallSoftware(Software opSoftware){
+    public void uninstallSoftware(Software opSoftware,Computer computer){
         this.opSoftware.remove(opSoftware);
+        computer.setHardDisk(computer.getHardDisk()+opSoftware.getSoftwareSpaceRequirement());
+        computer.setRamMemory(computer.getRamMemory()+opSoftware.getSoftwareRamMemoryRequirement());
     }
 }
 

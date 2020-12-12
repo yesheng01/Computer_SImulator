@@ -53,17 +53,20 @@ public class Computer {
     }
 
 //methods
-    public void installOperatingSystem(Operatingsystem os) throws Exception {
-        if (this.operatingSystem == null && this.HardDisk >= os.getOsSpaceRequirement()) {
-            os.setComputer(this);
-            this.operatingSystem = os;
-            updateDriveSpace(os.getOsSpaceRequirement(), "-");
-            updateRamSpace(os.getOsRamMemoryRequirement(), "-");
+
+    //Este metodo lo utilizamos para instalar el sistema operativo , por lo que le permite añadir el OS al sistema operativo.
+    //Utilizamos throws Exception para si tiene un sistema operativo lanza el exception , como lo vemos en el test y se instala,
+    public void installOperatingSystem(Operatingsystem operatingSystem) throws Exception {
+        if (this.operatingSystem == null && this.HardDisk >= operatingSystem.getOsSpaceRequirement()) {
+            operatingSystem.setComputer(this);
+            this.operatingSystem = operatingSystem;
+            updateDriveSpace(operatingSystem.getOsSpaceRequirement(), "-");
+            updateRamSpace(operatingSystem.getOsRamMemoryRequirement(), "-");
         } else {
             throw new Exception("Sistema Operativo  existe.");
         }
     }
-
+//Metodo para actualizar el espacio del sistema
     public void updateDriveSpace(int spaceToUpdate, String operativo) {
         switch (operativo) {
             case "+" -> {
@@ -74,6 +77,7 @@ public class Computer {
             }
         }
     }
+    //Actualiza la Ram
     public void updateRamSpace(int spaceToUpdate, String operativo) {
         switch (operativo) {
             case "+" -> {

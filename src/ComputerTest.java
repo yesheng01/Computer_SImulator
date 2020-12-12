@@ -18,29 +18,17 @@ public class ComputerTest {
         s1 = new Software("Photoshop", "1.0", 1, 1);
         s2 = new Software("OpenOffice", "10", 1, 6);
         // Methods
-        //Instalar el sistema operativo
+        //Instalar el sistema operativo , utilizamos el try catch para llamar el Exception de forma que recoja
+        //Datos al clase Computer que tenemos el installOperatingSystem.
         try {
             c1.installOperatingSystem(SO);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         //Instalamos el Software 1 al ordenador creada
-        if (c1.getHardDisk()>s1.getSoftwareSpaceRequirement()&&c1.getRamMemory()>s1.getSoftwareRamMemoryRequirement()){
-            c1.getOperatingSystem().installSoftware(s1);
-            c1.setHardDisk(c1.getHardDisk()-s1.getSoftwareSpaceRequirement());
-            c1.setRamMemory(c1.getRamMemory()-s1.getSoftwareRamMemoryRequirement());
-        }else {
-            System.out.println("No hay espacio");
-        }
+        c1.getOperatingSystem().installSoftware(s1,c1);
         //Instalamos el Software 2 al ordenador creada
-        if (c1.getHardDisk()>=s2.getSoftwareSpaceRequirement()&&c1.getRamMemory()>=s2.getSoftwareRamMemoryRequirement()){
-            c1.getOperatingSystem().installSoftware(s2);
-            c1.setHardDisk(c1.getHardDisk()-s2.getSoftwareSpaceRequirement());
-            c1.setRamMemory(c1.getRamMemory()-s2.getSoftwareRamMemoryRequirement());
-        }else {
-            System.out.println("No hay espacio");
-        }
-
+        c1.getOperatingSystem().installSoftware(s2,c1);
         //Enseñamos los programas que hemos creado
         System.out.println("Se ha instalado los siguientes programas:" + "\n" + s1.getSoftwareName() + "\n" + s2.getSoftwareName() + "\n");
 
@@ -50,12 +38,8 @@ public class ComputerTest {
         //Se muestra el ordenador
         System.out.println(c1.toString() + "\n");
         // Desinstalamos el software
-        c1.getOperatingSystem().uninstallSoftware(s1);
-        c1.getOperatingSystem().uninstallSoftware(s2);
-        c1.setHardDisk(c1.getHardDisk()+s2.getSoftwareSpaceRequirement());
-        c1.setRamMemory(c1.getRamMemory()+s2.getSoftwareRamMemoryRequirement());
-        c1.setHardDisk(c1.getHardDisk()+s1.getSoftwareSpaceRequirement());
-        c1.setRamMemory(c1.getRamMemory()+s1.getSoftwareRamMemoryRequirement());
+        c1.getOperatingSystem().uninstallSoftware(s1 , c1);
+        c1.getOperatingSystem().uninstallSoftware(s2 , c1);
         //Formateamos
         c1.formatSystem();
         //Muestra lo formateado
